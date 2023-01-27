@@ -6,7 +6,7 @@ import { useSession, signIn, signOut, getCsrfToken } from 'next-auth/react'
 
 export default function Home({ csrfToken }) {
   const { data: session } = useSession();
-  console.log(session);
+
   return (
     <>
       <Head>
