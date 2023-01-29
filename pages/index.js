@@ -5,7 +5,7 @@ import Signin from './signin';
 import { useSession, signIn, signOut, getCsrfToken } from 'next-auth/react'
 import InputForm from '@/components/InputForm';
 
-export default function Home({ csrfToken }) {
+export default function Home() {
   const { data: session } = useSession();
 
   return (
@@ -30,7 +30,7 @@ export default function Home({ csrfToken }) {
               priority
             />
           <div className={styles.thirteen}>
-            <Signin {...csrfToken}/>
+            <Signin />
           </div>
           </> : <>
           <InputForm/>
@@ -41,12 +41,4 @@ export default function Home({ csrfToken }) {
       </main>
     </>
   )
-}
-
-export async function getServerSideProps(context) {
-  return {
-    props: {
-      csrfToken: await getCsrfToken(context),
-    },
-  }
 }
