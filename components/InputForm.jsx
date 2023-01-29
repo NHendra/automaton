@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { submitQueries } from '../services';
 import { v4 as uuid } from 'uuid';
 import { getQueries } from '../services';
+import { useSession, signIn, signOut, getCsrfToken } from 'next-auth/react'
 
 const InputForm = ({ slug }) => {
   const [error, setError] = useState(false);
