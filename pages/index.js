@@ -21,16 +21,18 @@ export default function Home() {
         </div>
         <div className={styles.center}>
           {!session ? <>
+          <div className='align-middle'>
             <Image
-              className='stupid-smug'
-              src="/home.png"
-              alt="13"
-              width={200}
-              height={200}
-              priority
-            />
-          <div className={styles.thirteen}>
-            <Signin />
+                className='stupid-smug m-auto'
+                src="/home.png"
+                alt="13"
+                width={200}
+                height={200}
+                priority
+              />
+            <div className={`mt-10 ${styles.thirteen}`}>
+              <Signin />
+            </div>
           </div>
           </> : <>
           <InputForm/>
