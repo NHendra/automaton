@@ -25,10 +25,12 @@ const InputForm = ({ slug }) => {
   const [queries, setQueries] = useState([]);
 
   useEffect(() => {
-    getQueries().then((result) => {
-      setQueries(result);
-    });
-  }, []);
+    if (!showSuccessMessage) {
+      getQueries().then((result) => {
+        setQueries(result);
+      });
+    }
+  }, [showSuccessMessage]);
 
   const [valid, setValid] = useState(false);
 
