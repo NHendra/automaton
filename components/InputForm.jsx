@@ -32,27 +32,6 @@ const InputForm = ({ slug }) => {
     }
   }, [showSuccessMessage]);
 
-  const [valid, setValid] = useState(false);
-
-  useEffect(() => {
-    if (!formData.image) {
-      setValid(false);
-    } else {
-    fetch(formData.image)
-    .then((res) => {
-      console.log(res.status);
-      if (res.status == 404) {
-        setValid(false);
-      } else {
-        setValid(true);
-      }
-    })
-    .catch((err) => {
-      setValid(false);
-    });
-    }
-  }, [formData.image]);
-
   const onInputChange = (e) => {
     const { target } = e;
     if (target.type === 'checkbox') {
@@ -71,7 +50,7 @@ const InputForm = ({ slug }) => {
   const handlePostSubmission = () => {
     setError(false);
     const { caption, admin, image, storeData } = formData;
-    if (!caption || !admin || !image && !valid) {
+    if (!caption || !admin || !image) {
       setError(true);
       return;
     }
@@ -113,7 +92,7 @@ const InputForm = ({ slug }) => {
               <br/>
               <span className=''>{formData.admin ? '- ' + formData.admin : ''}</span>
             </div>
-            {valid && <img className='pt-2' src={formData.image} alt="Thumbnail" />}
+            {formData.image && <img className='pt-2' src={formData.image} alt="Thumbnail" />}
           </div>
         </div>
         <div className="grid grid-cols-1 gap-4 mb-4">
